@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgWhiteboardService } from 'projects/ng-whiteboard/src/public-api';
+import { NgWhiteboardService } from 'projects/ng-whiteboard-nl/src/public-api';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

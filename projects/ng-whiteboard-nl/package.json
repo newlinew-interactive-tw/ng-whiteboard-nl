@@ -1,0 +1,40 @@
+{
+    "name": "ng-whiteboard-nl",
+    "version": "2.0.8-semantically-released",
+    "author": {
+        "name": "Fernando Hdez",
+        "email": "derdatenshi@gmail.com"
+    },
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/datenshi/ng-whiteboard-nl.git"
+    },
+    "description": "Angular whiteboard component",
+    "keywords": [
+        "angular",
+        "whiteboard",
+        "component",
+        "library"
+    ],
+    "homepage": "https://datenshi.github.io/ng-whiteboard-nl/",
+    "bugs": {
+        "url": "https://github.com/datenshi/ng-whiteboard-nl/issues"
+    },
+    "peerDependencies": {
+        "@angular/common": "^8.2.0",
+        "@angular/core": "^8.2.0"
+    },
+    "dependencies": {
+        "d3": "^5.9.7"
+    },
+    "devDependencies": {
+        "@angular/common": "^8.2.14",
+        "@angular/core": "^8.2.14",
+        "rxjs": "^6.6.3",
+        "zone.js": "^0.9.1"
+    }
+}

@@ -1,9 +1,4 @@
-<a
-  href="https://github.com/mostafazke/ng-whiteboard"
-  target="_blank"
-  class="github-corner"
-  aria-label="View source on GitHub"
-  ><svg
+<a href="https://github.com/mostafazke/ng-whiteboard" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg
     width="80"
     height="80"
     viewBox="0 0 250 250"
@@ -22,101 +17,82 @@
       fill="currentColor"
       class="octo-body"
     ></path></svg></a
-><style>
-  .github-corner:hover .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
-  }
-  @keyframes octocat-wave {
-    0%,
-    100% {
-      transform: rotate(0);
-    }
-    20%,
-    60% {
-      transform: rotate(-25deg);
-    }
-    40%,
-    80% {
-      transform: rotate(10deg);
-    }
-  }
-  @media (max-width: 500px) {
+>
+<style>
     .github-corner:hover .octo-arm {
-      animation: none;
+        animation: octocat-wave 560ms ease-in-out;
     }
-    .github-corner .octo-arm {
-      animation: octocat-wave 560ms ease-in-out;
+    
+    @keyframes octocat-wave {
+        0%,
+        100% {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
     }
-  }
+    
+    @media (max-width: 500px) {
+        .github-corner:hover .octo-arm {
+            animation: none;
+        }
+        .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out;
+        }
+    }
 </style>
 <div class="white-board">
-  <ng-whiteboard
-    [color]="color"
-    [backgroundColor]="backgroundColor"
-    [size]="size"
-    (init)="onInit()"
-    (clear)="onClear()"
-    (imageAdded)="onImageAded()"
-    (redo)="onRedo()"
-    (undo)="onUndo()"
-    (save)="onSave()"
-  ></ng-whiteboard>
+    <ng-whiteboard [color]="color" [backgroundColor]="backgroundColor" [size]="size" (init)="onInit()" (clear)="onClear()" (imageAdded)="onImageAded()" (redo)="onRedo()" (undo)="onUndo()" (save)="onSave()"></ng-whiteboard>
 </div>
 <div class="tools">
-  <button (click)="save()">Save</button>
+    <button (click)="save()">Save</button>
 
-  <div class="size-dropdown">
-    <button (click)="$event.preventDefault(); $event.stopPropagation(); isActive = !isActive">Size</button>
-    <ul class="dropdown" [ngClass]="{ active: isActive }">
-      <li class="dropdown-item" (click)="setSize('2.5px')" [class.selected]="size === '2.5px'">
-        <svg height="100%" width="100%">
+    <div class="size-dropdown">
+        <button (click)="$event.preventDefault(); $event.stopPropagation(); isActive = !isActive">Size</button>
+        <ul class="dropdown" [ngClass]="{ active: isActive }">
+            <li class="dropdown-item" (click)="setSize('2.5px')" [class.selected]="size === '2.5px'">
+                <svg height="100%" width="100%">
           <line x1="0" y1="50%" x2="100" y2="50%" style="stroke-width:2.5px" [ngStyle]="{ stroke: color }" />
         </svg>
-      </li>
-      <li class="dropdown-item" (click)="setSize('5px')" [class.selected]="size === '5px'">
-        <svg height="100%" width="100%">
+            </li>
+            <li class="dropdown-item" (click)="setSize('5px')" [class.selected]="size === '5px'">
+                <svg height="100%" width="100%">
           <line x1="0" y1="50%" x2="100" y2="50%" style="stroke-width:5px" [ngStyle]="{ stroke: color }" />
         </svg>
-      </li>
-      <li class="dropdown-item" (click)="setSize('10px')" [class.selected]="size === '10px'">
-        <svg height="100%" width="100%">
+            </li>
+            <li class="dropdown-item" (click)="setSize('10px')" [class.selected]="size === '10px'">
+                <svg height="100%" width="100%">
           <line x1="0" y1="50%" x2="100" y2="50%" style="stroke-width:10px" [ngStyle]="{ stroke: color }" />
         </svg>
-      </li>
-      <li class="dropdown-item" (click)="setSize('15px')" [class.selected]="size === '15px'">
-        <svg height="100%" width="100%">
+            </li>
+            <li class="dropdown-item" (click)="setSize('15px')" [class.selected]="size === '15px'">
+                <svg height="100%" width="100%">
           <line x1="0" y1="50%" x2="100" y2="50%" style="stroke-width:15px" [ngStyle]="{ stroke: color }" />
         </svg>
-      </li>
-    </ul>
-  </div>
+            </li>
+        </ul>
+    </div>
 
-  <button (click)="erase()">Erase</button>
-  <button (click)="undo()">Undo</button>
-  <button (click)="redo()">Redo</button>
+    <button (click)="erase()">Erase</button>
+    <button (click)="undo()">Undo</button>
+    <button (click)="redo()">Redo</button>
+    <button (click)="addText()">Text</button>
 
-  <input id="colorInput" class="color-input" type="color" [value]="color" (change)="color = $event.target.value" />
-  <label for="colorInput" class="color-label" [ngStyle]="{ 'background-color': color }"></label>
+    <input id="colorInput" class="color-input" type="color" title="Drawing color" [value]="color" (change)="color = $event.target.value" />
+    <label for="colorInput" class="color-label" [ngStyle]="{ 'background-color': color }"></label>
 
-  <input
-    id="backgroundInput"
-    class="color-input"
-    type="color"
-    [value]="backgroundColor"
-    (change)="backgroundColor = $event.target.value"
-  />
-  <label for="backgroundInput" class="color-label" [ngStyle]="{ 'background-color': backgroundColor }"></label>
+    <input id="backgroundInput" class="color-input" type="color" title="Backgroundcolor" [value]="backgroundColor" (change)="backgroundColor = $event.target.value" />
+    <label for="backgroundInput" class="color-label" [ngStyle]="{ 'background-color': backgroundColor }"></label>
 
-  <input type="file" class="color-input" id="photoInput" (change)="addImage($event.target)" />
-  <label
-    for="photoInput"
-    class="color-label"
-    [ngStyle]="{
-      'background-image':
-        'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHElEQVRYhe3XsWtUQRAG8N+G45ADJUUIFiHYaCESTArTWKRSSSVpRSvxL5A0VuJ/YorUFmlsxUKTYCVGhRRBEMHYJKjJmTyLN6fv4uVuDy+JhXMMj7f77czH7De771KhcJI2dKLZ/wUCtVxgkk7hAsYdTnwfG3hXKL5nBS4yf3iETRQ9fBMPs+NmJp/JSHzQr+bE7ljKJA0lqRbewK2scrbb7SQ1KnE65mrTQJJquINpNGK4HhXo125iGLvx/jVJL/C4UPz4haqU+SyW9F/qfn0Jo39oAPNoHgOBJuY7aeC6PtryL6wWudDez8OZAdbxAJM4HT4ZY+uZMX7nqmzBqu6l21Pu30QQP4NzyoOpEWMTgdnrEWu1kwZ6EXiO8cq58ARv8RoLuBhz44EdKIEmpgJ3AzsdMJsVElO6C7pvAstR4lE864JbqGzHcg6B3NtwpVDsB4HLXXBTGAnsSk7gXALbFXy3Vq1VYm53wfVNYCyeX7DWBbcWmOqa7papgY/KO2EI9w7B7GAmYtVjzUDbcB61wN7FK3zDllKYszFXC+zAz4FPyhuutc9jyoPnkrhcYm4usAMn0CJxH/UOHy31mOuVvI1AisXirr4izz7gKd7H+3lckys8XhaKabRVYDGD+aB8sdMWzCoFddTJt4RgDxJoCeiNo/kwaUbsOdFNbRpoWZLGMaIU1SBtF58LxUZbvoMEjttO/K/ZfwI/AfTgP/XC4sIdAAAAAElFTkSuQmCC)',
-      'background-position': 'center',
-      'background-size': 'cover',
-      'box-shadow': 'none'
-    }"
-  ></label>
+    <input type="file" class="color-input" id="photoInput" (change)="addImage($event.target)" />
+    <label for="photoInput" class="color-label" [ngStyle]="{ 'background-image': 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHElEQVRYhe3XsWtUQRAG8N+G45ADJUUIFiHYaCESTArTWKRSSSVpRSvxL5A0VuJ/YorUFmlsxUKTYCVGhRRBEMHYJKjJmTyLN6fv4uVuDy+JhXMMj7f77czH7De771KhcJI2dKLZ/wUCtVxgkk7hAsYdTnwfG3hXKL5nBS4yf3iETRQ9fBMPs+NmJp/JSHzQr+bE7ljKJA0lqRbewK2scrbb7SQ1KnE65mrTQJJquINpNGK4HhXo125iGLvx/jVJL/C4UPz4haqU+SyW9F/qfn0Jo39oAPNoHgOBJuY7aeC6PtryL6wWudDez8OZAdbxAJM4HT4ZY+uZMX7nqmzBqu6l21Pu30QQP4NzyoOpEWMTgdnrEWu1kwZ6EXiO8cq58ARv8RoLuBhz44EdKIEmpgJ3AzsdMJsVElO6C7pvAstR4lE864JbqGzHcg6B3NtwpVDsB4HLXXBTGAnsSk7gXALbFXy3Vq1VYm53wfVNYCyeX7DWBbcWmOqa7papgY/KO2EI9w7B7GAmYtVjzUDbcB61wN7FK3zDllKYszFXC+zAz4FPyhuutc9jyoPnkrhcYm4usAMn0CJxH/UOHy31mOuVvI1AisXirr4izz7gKd7H+3lckys8XhaKabRVYDGD+aB8sdMWzCoFddTJt4RgDxJoCeiNo/kwaUbsOdFNbRpoWZLGMaIU1SBtF58LxUZbvoMEjttO/K/ZfwI/AfTgP/XC4sIdAAAAAElFTkSuQmCC)',
+        'background-position': 'center',
+        'background-size': 'cover',
+        'box-shadow': 'none' }"></label>
 </div>
